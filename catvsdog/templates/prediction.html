@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification Result</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .result {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        text-align: center;
+    }
+    img {
+        margin-top: 20px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="jumbotron bg-primary text-center text-white">Prediction Result</h1>
+  <div class="result mt-4">
+    <!-- Display the uploaded image -->
+    <div class="preview mt-4">
+        <h2>Image Visualization:</h2>
+        <img src="{{ url_for('send_uploaded_file', filename=img_path[15:]) }}" class="img-fluid" alt="Predicted Image">
+    </div><br>
+    <!-- Display the prediction result -->
+    <h2>Prediction: <i>{{ result }}</i></h2>
+    <!-- <a href="/" style="text-decoration: none; color: rgb(15, 25, 216);"><h2>Retour</h2></a> -->
+  </div><br>
+  <center><a href="/" style="text-decoration: none; color: rgb(15, 25, 216);"><h2>Retour</h2></a></center>
+</div>
+</body>
+</html>

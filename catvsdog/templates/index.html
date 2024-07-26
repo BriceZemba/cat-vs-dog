@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <link rel="shortcut icon" href="images/logo.png" type="image/png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .preview {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        text-align: center;
+    }
+    img {
+        margin-top: 20px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    .btn-primary {
+        margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="jumbotron bg-primary text-center text-white">Image Classification</h1>
+  <br><br>
+  <form class="form-horizontal text-center" method="POST" enctype="multipart/form-data" action="/">
+    <div class="form-group">
+      <label class="control-label" for="file"><h2>Upload Your Image :</h2></label>
+      <center><input type="file" class="preview" name="file" id="file" onchange="loadFile(event)"></center>
+    </div>
+  <div class="preview mt-4" id="preview">
+      <h2>Image Preview:</h2>
+      <img src="#" class="img-fluid" id="output" style="display:none;" alt="">
+  </div>
+  <button type="submit" class="btn btn-primary"><h2>Submit</h2></button>
+</div>
+</form>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    var preview = document.getElementById('preview');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.style.display = 'block';
+    preview.style.display = 'block';
+    output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+
+</body>
+</html>
